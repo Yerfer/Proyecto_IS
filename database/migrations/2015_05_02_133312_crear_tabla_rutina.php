@@ -15,8 +15,8 @@ class CrearTablaRutina extends Migration {
 		Schema::create('Rutina', function(Blueprint $table)
 		{
 			$table->increments('id');
-            $table->string('nombre',20);
-            $table->string('descripcion',60);
+            $table->string('nombre',30);
+            $table->string('descripcion',200);
 
 			$table->timestamps();
 		});

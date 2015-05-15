@@ -19,3 +19,7 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+Route::group(['prefix' => 'pro', 'namespace' => 'Pro'], function(){
+    Route::resource('rutinas','RutinasController');
+});
