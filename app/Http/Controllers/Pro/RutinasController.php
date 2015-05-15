@@ -1,11 +1,13 @@
 <?php namespace App\Http\Controllers\Pro;
 
+use App\Dia;
 use App\Ejercicio;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Rutina;
 use App\RutinaEjercicioDia;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request as RequestHttp;
 use Illuminate\Routing\Redirector;
 
 class RutinasController extends Controller {
@@ -39,56 +41,56 @@ class RutinasController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function store(Request $request, Redirector $redirect)
+	public function store(RequestHttp $RequestHttp, Redirector $redirect)
 	{
         //dd($request->all());
-        $rutina = new Rutina($request->all());
+        $rutina = new Rutina($RequestHttp->all());
         $rutina->save();
 
-        if($request->Dia_1<>null){
+        if($RequestHttp->Dia_1<>null){
             $array = [
                 "id_rutina"     => $rutina->id,
-                "id_ejercicio"  => $request->Dia_1,
+                "id_ejercicio"  => $RequestHttp->Dia_1,
                 "id_dia"        => 1,
             ];
             $rutinaEjercicioDia = new RutinaEjercicioDia($array);
             $rutinaEjercicioDia->save();
         }
 
-        if($request->Dia_2<>null){
+        if($RequestHttp->Dia_2<>null){
             $array = [
                 "id_rutina"     => $rutina->id,
-                "id_ejercicio"  => $request->Dia_2,
+                "id_ejercicio"  => $RequestHttp->Dia_2,
                 "id_dia"        => 2,
             ];
             $rutinaEjercicioDia = new RutinaEjercicioDia($array);
             $rutinaEjercicioDia->save();
         }
 
-        if($request->Dia_3<>null){
+        if($RequestHttp->Dia_3<>null){
             $array = [
                 "id_rutina"     => $rutina->id,
-                "id_ejercicio"  => $request->Dia_3,
+                "id_ejercicio"  => $RequestHttp->Dia_3,
                 "id_dia"        => 3,
             ];
             $rutinaEjercicioDia = new RutinaEjercicioDia($array);
             $rutinaEjercicioDia->save();
         }
 
-        if($request->Dia_4<>null){
+        if($RequestHttp->Dia_4<>null){
             $array = [
                 "id_rutina"     => $rutina->id,
-                "id_ejercicio"  => $request->Dia_4,
+                "id_ejercicio"  => $RequestHttp->Dia_4,
                 "id_dia"        => 4,
             ];
             $rutinaEjercicioDia = new RutinaEjercicioDia($array);
             $rutinaEjercicioDia->save();
         }
 
-        if($request->Dia_5<>null){
+        if($RequestHttp->Dia_5<>null){
             $array = [
                 "id_rutina"     => $rutina->id,
-                "id_ejercicio"  => $request->Dia_5,
+                "id_ejercicio"  => $RequestHttp->Dia_5,
                 "id_dia"        => 5,
             ];
             $rutinaEjercicioDia = new RutinaEjercicioDia($array);
@@ -118,7 +120,11 @@ class RutinasController extends Controller {
 	 */
 	public function edit($id)
 	{
-		//
+		$rutinas = Rutina::findOrFail($id);
+
+        $ejercicios = Ejercicio::paginate();
+
+        return view('pro.rutinas.edit',compact('rutinas','ejercicios'));
 	}
 
 	/**
@@ -127,9 +133,71 @@ class RutinasController extends Controller {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function update($id)
+	public function update($id, RequestHttp $RequestHttp, Redirector $redirect)
 	{
-		//
+        $rutina = Rutina::findOrFail($id);
+        $rutina->fill(Request::all());
+        //$rutina = new Rutina(Request::all());
+        $rutina->save();
+
+        if($RequestHttp->Dia_1<>null){
+            $ejercicio = Ejercicio::findOrFail($RequestHttp->Dia_1);
+            $dia = Dia::findOrFail(1);
+
+            $array = [
+                "id_rutina"     => $rutina->id,
+                "id_ejercicio"  => $ejercicio->id,
+                "id_dia"        => $dia->id,
+            ];
+            $rutinaEjercicioDia = new RutinaEjercicioDia($array);
+            $rutinaEjercicioDia->save();
+        }
+
+
+
+        if($RequestHttp->Dia_2<>null){
+            $array = [
+                "id_rutina"     => $rutina->id,
+                "id_ejercicio"  => $RequestHttp->Dia_2,
+                "id_dia"        => 2,
+            ];
+            $rutinaEjercicioDia = new RutinaEjercicioDia($array);
+            $rutinaEjercicioDia->save();
+        }
+
+        if($RequestHttp->Dia_3<>null){
+            $array = [
+                "id_rutina"     => $rutina->id,
+                "id_ejercicio"  => $RequestHttp->Dia_3,
+                "id_dia"        => 3,
+            ];
+            $rutinaEjercicioDia = new RutinaEjercicioDia($array);
+            $rutinaEjercicioDia->save();
+        }
+
+        if($RequestHttp->Dia_4<>null){
+            $array = [
+                "id_rutina"     => $rutina->id,
+                "id_ejercicio"  => $RequestHttp->Dia_4,
+                "id_dia"        => 4,
+            ];
+            $rutinaEjercicioDia = new RutinaEjercicioDia($array);
+            $rutinaEjercicioDia->save();
+        }
+
+        if($RequestHttp->Dia_5<>null){
+            $array = [
+                "id_rutina"     => $rutina->id,
+                "id_ejercicio"  => $RequestHttp->Dia_5,
+                "id_dia"        => 5,
+            ];
+            $rutinaEjercicioDia = new RutinaEjercicioDia($array);
+            $rutinaEjercicioDia->save();
+        }
+
+        
+
+        $redirect->route('pro.rutinas.index');
 	}
 
 	/**

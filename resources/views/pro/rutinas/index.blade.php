@@ -25,11 +25,11 @@
                                     <td>{{ $rutina->descripcion }}</td>
                                     <td>
                                         <a role="button" class="btn btn-warning" href="">Ver</a>
-                                        <a role="button" class="btn btn-primary" href="">Editar</a>
+                                        <a role="button" class="btn btn-primary" href="{{ route('pro.rutinas.edit', $rutina->id) }}">Editar</a>
                                         <a role="button" class="btn btn-danger" href="">Eliminar</a>
-                                        <a href="">Ver</a>
-                                        <a href="">Editar</a>
-                                        <a href="">Eliminar</a>
+                                        <!--<a href="">Ver</a>
+                                        <a href="{{ route('pro.rutinas.edit', $rutina->id) }}">Editar</a>
+                                        <a href="">Eliminar</a> -->
                                     </td>
                                 </tr>
                             @endforeach
