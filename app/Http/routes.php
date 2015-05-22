@@ -23,3 +23,7 @@ Route::controllers([
 Route::group(['prefix' => 'pro', 'namespace' => 'Pro'], function(){
     Route::resource('rutinas','RutinasController');
 });
+
+Route::group(['prefix' => 'deportista', 'namespace' => 'deportista'], function(){
+    Route::resource('objetivos','ObjetivosController');
+});

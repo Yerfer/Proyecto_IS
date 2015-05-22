@@ -6,7 +6,7 @@ use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
 
-class Deportista extends Model implements AuthenticatableContract, CanResetPasswordContract {
+class Objetivo extends Model implements AuthenticatableContract, CanResetPasswordContract {
 
     use Authenticatable, CanResetPassword;
 
@@ -15,28 +15,20 @@ class Deportista extends Model implements AuthenticatableContract, CanResetPassw
      *
      * @var string
      */
-    protected $table = 'deportista';
+    protected $table = 'objetivo';
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-    protected $fillable = ['cedula', 'nombre','apellido','telefono','email','password'];
+    protected $fillable = ['objetivo', 'id_deportista'];
 
     /**
      * The attributes excluded from the model's JSON form.
      *
      * @var array
      */
-    protected $hidden = ['password','remember_token'];
-
-    public function rutina(){
-        return $this->hasOne('App\DeportistaRutina');
-    }
-
-    public function objetivo(){
-        return $this->hasOne('App\Objetivo');
-    }
+    protected $hidden = [];
 
 }
