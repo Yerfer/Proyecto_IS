@@ -24,12 +24,13 @@
                                     <td>{{ $rutina->nombre }}</td>
                                     <td>{{ $rutina->descripcion }}</td>
                                     <td>
-                                        <a role="button" class="btn btn-warning" href="">Ver</a>
+                                        <a role="button" class="btn btn-warning" href="{{ route('pro.rutinas.show', $rutina->id) }}">Ver</a>
                                         <a role="button" class="btn btn-primary" href="{{ route('pro.rutinas.edit', $rutina->id) }}">Editar</a>
-                                        <a role="button" class="btn btn-danger" href="">Eliminar</a>
-                                        <!--<a href="">Ver</a>
-                                        <a href="{{ route('pro.rutinas.edit', $rutina->id) }}">Editar</a>
-                                        <a href="">Eliminar</a> -->
+
+                                        {!! Form::open(['route' => ['pro.rutinas.destroy', $rutina], 'method' => 'DELETE']) !!}
+                                            <button type="submit" onclick="return confirm('Estás Seguro de Eliminar esta Rutina?')" class="btn btn-danger">Eliminar</button>
+                                        {!! Form::close() !!}
+
                                     </td>
                                 </tr>
                             @endforeach

@@ -45,6 +45,11 @@
                         {!! Form::close() !!}
                     </div>
                 </div>
+
+                {!! Form::open(['route' => ['pro.rutinas.destroy', $rutinas], 'method' => 'DELETE']) !!}
+                    <button type="submit" onclick="return confirm('Estás Seguro de Eliminar esta Rutina?')" class="btn btn-danger">Eliminar Rutina</button>
+                {!! Form::close() !!}
+
             </div>
         </div>
     </div>
