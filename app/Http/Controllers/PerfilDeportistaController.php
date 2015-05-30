@@ -25,6 +25,7 @@ class PerfilDeportistaController extends Controller {
                     ->select('id')
                     ->where('id_deportista','=', ($usuario[0]->id))
                     ->get();
+                //echo $usuario[0]->id;
                 array_push($usuario, Perfil::find($idperfil[0]->id));
                 return view('Deportista.perfil')->with('usuario',$usuario);
             }else{

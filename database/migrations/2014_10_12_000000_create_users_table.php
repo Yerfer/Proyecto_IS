@@ -13,7 +13,7 @@ class CreateUsersTable extends Migration {
 	public function up()
 	{
         /**
-         * 	Schema::create('users', function(Blueprint $table)
+		Schema::create('users', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('name');
@@ -21,20 +21,18 @@ class CreateUsersTable extends Migration {
 			$table->string('password', 60);
 			$table->rememberToken();
 			$table->timestamps();
-		});* **/
+		});
+         * **/
 	}
-
 
 	/**
 	 * Reverse the migrations.
 	 *
 	 * @return void
 	 */
-
-    public function down()
-	{/**
-		Schema::drop('users');* **/
+	public function down()
+	{
+		//Schema::drop('users');
 	}
-
 
 }

@@ -7,7 +7,6 @@
 				<div class="panel-heading">Usuarios</div>
 				<div class="panel-body">
                 @if($usuarios)
-
                           <table class="table">
                             <thead>
                               <tr>
@@ -24,14 +23,14 @@
                                 <td><a href="usuario/{{$usuario->id}}">{{$usuario->id}}</a></td>
                                 <td>{{$usuario->nombre}}</td>
                                 <td>{{$usuario->apellido}}</td>
-                                <td>{{$usuario->cedula}}</td>
+                                <td>{{$usuario->Cedula}}</td>
                                 <td>{{$usuario->tipo}}</td>
                               </tr>
                               @endforeach
                             </tbody>
                           </table>
-
                         @endif
+
 				</div>
 			</div>
 		</div>

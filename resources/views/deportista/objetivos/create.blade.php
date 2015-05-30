@@ -1,13 +1,13 @@
-@extends('app')
+@extends('Deportista/LayoutDeport')
 
-@section('content')
+@section('contenido')
     <div class="container">
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="panel panel-default">
                     <div class="panel-heading">Bienvenido {{ $deportista[0]->nombre }}</div>
                     <div class="panel-body">
-                        {!! Form::open([ 'route' => ['deportista.objetivos.store', $deportista[0]->id], 'method' => 'POST']) !!}
+                        {!! Form::open([ 'route' => ['depor.objetivos.store', $deportista[0]->id], 'method' => 'POST']) !!}
                         <div class="form-group">
                             {!! Form::hidden('id_deportista', $deportista[0]->id ) !!}
                             {!! Form::label('objetivo', 'Objetivo Nuevo') !!}

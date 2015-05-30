@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('TablaDiaSeeder');
         $this->call('TablaDeportistaRutinaSeeder');
         $this->call('TablaRutinaEjercicioDiaSeeder');
+        $this->call('TablaPerfilDeportistaSeeder');
         $this->call('TablaObjetivoSeeder');
 	}
 

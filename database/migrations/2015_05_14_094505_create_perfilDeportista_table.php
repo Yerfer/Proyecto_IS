@@ -15,9 +15,9 @@ class CreatePerfilDeportistaTable extends Migration {
             Schema::create('perfilDeportista', function(Blueprint $table)
             {
                 $table->increments('id');
-                $table->integer('id_deportista');
+                $table->Integer('id_deportista')->unsigned();
                 $table->string('direccion')->nullable();
-                $table->integer('telefono')->nullable();
+                $table->integer('telefono')->nullable();  //Otra vez TELEFONO?????? en usuarios YA HAY!!
                 $table->smallInteger('peso')->nullable();
                 $table->smallInteger('altura')->nullable();
                 $table->smallInteger('presion')->nullable();
@@ -25,7 +25,6 @@ class CreatePerfilDeportistaTable extends Migration {
                 $table->foreign('id_deportista')
                     ->references('id')
                     ->on('usuarios')
-                    //->on('Deportista')
                     ->onDelete('cascade');
 
                 $table->timestamps();

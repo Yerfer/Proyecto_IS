@@ -12,7 +12,8 @@ class CrearTablaEjercicio extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('Ejercicio', function(Blueprint $table)
+		//Schema::create('Ejercicios', function(Blueprint $table)
+        Schema::create('Ejercicio', function(Blueprint $table)
 		{
 			$table->increments('id');
             //$table->integer('id_categoria');
@@ -22,8 +23,8 @@ class CrearTablaEjercicio extends Migration {
             $table->Integer('repeticiones')->nullable();
             $table->Integer('series')->nullable();
             $table->string('peso',30)->nullable();
-            //$table->increments('imagen');
-
+            $table->string('categoria');
+            $table->text('descripcion')->nullable();
             $table->timestamps();
 		});
 	}
@@ -35,7 +36,8 @@ class CrearTablaEjercicio extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('Ejercicio');
+		//Schema::drop('Ejercicios');
+        Schema::drop('Ejercicio');
 	}
 
 }

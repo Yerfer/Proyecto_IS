@@ -19,6 +19,7 @@ class RutinasController extends Controller {
 	 */
 	public function index()
 	{
+
 		$rutinas = Rutina::paginate();
 
         return view('pro.rutinas.index',compact('rutinas'));

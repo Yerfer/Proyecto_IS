@@ -16,7 +16,7 @@ class CreateMedidasTable extends Migration {
         Schema::create('medidas', function(Blueprint $table)
         {
             $table->increments('id');
-            $table->integer('id_deportista');
+            $table->Integer('id_deportista')->unsigned();
             $table->smallInteger('biceps')->nullable();
             $table->smallInteger('hombros')->nullable();
             $table->smallInteger('pecho')->nullable();

@@ -23,7 +23,7 @@ class CreateUsuariosTable extends Migration {
             $table->Integer('telefono')->nullable();
             $table->string('password', 60);
             $table->enum('tipo',['deportista','admin','entrenador']);
-            $table->integer('id_perfil')->unsigned();
+            //$table->integer('id_perfil')->unsigned();
 
             $table->rememberToken();
             $table->timestamps();

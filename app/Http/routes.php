@@ -1,4 +1,4 @@
-<?php //namespace App\Http;
+<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+//Route::get('/', 'WelcomeController@index');
 
 Route::get('home', 'HomeController@index');
 
@@ -19,11 +19,22 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+Route::resource('maquinas','MaquinaController');
+Route::resource('usuario','UsuarioController');
+Route::resource('login','LoginController');
+Route::get('logout','LoginController@logout');
+Route::resource('administrador','AdminController');
+Route::resource('deportista','DeportistaController');
+Route::resource('perfil','PerfilDeportistaController');
+Route::resource('medidas','MedidasController');
+Route::resource('entrenador','EntrenadorController');
+Route::resource('ejercicios','EjercicioController');
 
-Route::group(['prefix' => 'pro', 'namespace' => 'Pro'], function(){
-    Route::resource('rutinas','RutinasController');
-});
 
-Route::group(['prefix' => 'deportista', 'namespace' => 'deportista'], function(){
-    Route::resource('objetivos','ObjetivosController');
-});
+Route::resource('pro/rutinas','pro\RutinasController');
+Route::resource('depor/objetivos','deportista\ObjetivosController');
+
+
+
+
+

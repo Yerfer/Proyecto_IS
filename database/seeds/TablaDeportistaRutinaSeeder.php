@@ -10,7 +10,7 @@ class TablaDeportistaRutinaSeeder extends Seeder{
         //$faker = Faker::create();
         //for( $i = 0; $i < 22; $i++){ }
 
-        $id_deportista = \DB::table('deportista')
+        $id_deportista = \DB::table('usuarios')
             ->select('id')
             ->where('cedula','=', '123456789')
             ->first();

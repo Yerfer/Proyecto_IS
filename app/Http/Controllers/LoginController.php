@@ -53,25 +53,26 @@ class LoginController extends Controller {
 	 */
 	public function store(Request $request)
 	{
-		//
         $usuario = Login::select('id','usuario', 'password', 'tipo')
             ->where('usuario','=',$request->usuario)
             ->get();
         if(count($usuario)>0) {
-            if ($usuario[0]->password == $request->password) {
-                $user=['usuario'=> $usuario[0]->usuario,'tipo'=>$usuario[0]->tipo, 'id'=> $usuario[0]->id];
-                Session::put($user);
-                if($usuario[0]->tipo=='admin'){
-                    return redirect('administrador');
-                }elseif($usuario[0]->tipo=='deportista'){
-                    return redirect('deportista');
-                }else{
-                    return redirect('entrenador');
+            //if ($usuario[0]->password == $request->password) {
+            if (\Hash::check($request->password, $usuario[0]->password)) {
+                    $user=['usuario'=> $usuario[0]->usuario,'tipo'=>$usuario[0]->tipo, 'id'=> $usuario[0]->id];
+                    Session::put($user);
+                    if($usuario[0]->tipo=='admin'){
+                        return redirect('administrador');
+                    }elseif($usuario[0]->tipo=='deportista'){
+                        return redirect('deportista');
+                    }else{
+                        return redirect('entrenador');
+                    }
+                } else {
+                    return redirect('login');
                 }
-            } else {
-                return redirect('login');
             }
-        }else{
+        else{
             return redirect('login');
         }
 

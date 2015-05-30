@@ -20,7 +20,7 @@ class CrearTablaObjetivo extends Migration {
 
             $table->foreign('id_deportista')
                 ->references('id')
-                ->on('Deportista')
+                ->on('usuarios')
                 ->onDelete('cascade');
 
 			$table->timestamps();

@@ -16,9 +16,10 @@ class ObjetivosController extends Controller {
 	 *
 	 * @return Response
 	 */
-	public function index()
+	public function index(Redirector $redirect)
 	{
-		//
+        //echo "Index de Objetivos";
+        return $redirect->route('depor.objetivos.create');
 	}
 
 	/**
@@ -28,7 +29,8 @@ class ObjetivosController extends Controller {
 	 */
 	public function create()
 	{
-        $deportista = \DB::table('deportista')
+        //echo "uadacs";
+        $deportista = \DB::table('usuarios')
             ->select('*')
             ->where('id', '=', '1')
             ->get();
@@ -59,7 +61,7 @@ class ObjetivosController extends Controller {
         $objetivo = new Objetivo($array);
         $objetivo->save();
 
-        return $redirect->route('deportista.objetivos.create');
+        return $redirect->route('depor.objetivos.create');
 	}
 
 	/**
