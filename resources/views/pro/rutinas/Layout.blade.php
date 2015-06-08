@@ -33,12 +33,12 @@
 
 			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 				<ul class="nav navbar-nav">
-					<li><a href="/administrador">Inicio</a></li>
+					<li><a href="/entrenador">Inicio</a></li>
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
-                    <li><a href="/usuario">Mostrar</a></li>
-                    <li><a href="/usuario/create">Crear</a></li>
+                    <li><a href="/pro/rutinas">Rutinas</a></li>
+                    <li><a href="/asignarrutinas">Asignar Rutina</a></li>
 
 				</ul>
 			</div>

@@ -32,6 +32,7 @@ Route::resource('ejercicios','EjercicioController');
 
 
 Route::resource('pro/rutinas','pro\RutinasController');
+Route::resource('asignarrutinas','pro\AsignarRutinasController');
 Route::resource('depor/objetivos','deportista\ObjetivosController');
 
 

@@ -31,6 +31,7 @@
 				</ul>
 
 				<ul class="nav navbar-nav navbar-right">
+                    <li><a href="/pro/rutinas">Rutinas</a></li>
                     <li><a href="/ejercicios">Ejercicios</a></li>
                     <li><a href="/logout">Cerrar Sesión</a></li>
 				</ul>

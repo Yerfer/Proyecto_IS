@@ -1,10 +1,12 @@
 <?php namespace App\Http\Controllers\Pro;
 
 use App\Dia;
+use Session;
 use App\Ejercicio;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Rutina;
+use App\Deportista;
 use App\RutinaEjercicioDia;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Http\Request as RequestHttp;
@@ -20,9 +22,21 @@ class RutinasController extends Controller {
 	public function index()
 	{
 
-		$rutinas = Rutina::paginate();
+        if(Session::has('usuario')){
+            if(Session::get('tipo')=='admin'){
+                return redirect('login');
+            }elseif(Session::get('tipo')=='deportista'){
+                return redirect('login');
+            }else{
+                $rutinas = Rutina::paginate();
+                return view('pro.rutinas.index',compact('rutinas'));
+            }
+        }else{
+            return redirect('login');
+        }
 
-        return view('pro.rutinas.index',compact('rutinas'));
+		//$rutinas = Rutina::paginate();
+        //return view('pro.rutinas.index',compact('rutinas'));
 
 	}
 
